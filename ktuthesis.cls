@@ -1,12 +1,13 @@
 \LoadClass[12pt,a4paper]{article}
 \RequirePackage[left=3cm,right=1cm,top=1.5cm,bottom=1.5cm]{geometry}
 \RequirePackage{graphicx}
-\RequirePackage[T1]{fontenc}
-\RequirePackage[utf8]{inputenc}
-\RequirePackage[lithuanian]{babel}
-\RequirePackage{mathptmx}
 \RequirePackage{xcolor}
 \RequirePackage{scrextend}
+\RequirePackage{fontspec}
+\RequirePackage{sectsty}
+\RequirePackage{titlesec}
+
+\setmainfont{Times New Roman}
 
 \definecolor{brown}{HTML}{D4AF37}
 \definecolor{gray}{HTML}{808080}
@@ -26,9 +27,17 @@
 \newcommand*\authorgenitive[1]{\gdef\@authorgenitive{#1}}
 \newcommand*\@authorgenitive{\@latex@error{\noexpand\authorgenitive is not provided.}}
 
+\renewcommand{\contentsname}{Turinys}
+\renewcommand{\listfigurename}{Paveikslų sąrašas}
+\renewcommand{\listtablename}{Lentelių sąrašas}
+
 \linespread{1.15}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{3.5mm}
+
+\sectionfont{\fontsize{12}{15}\selectfont}
+\titlespacing{\section}{0pt}{0pt}{0.35cm}
+\titlespacing{\subsection}{0pt}{0pt}{13.5mm}
 
 \renewcommand\maketitle{
   % First title page

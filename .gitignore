@@ -4,3 +4,7 @@
 *.log
 *.pdf
 *.gz
+*.xdv
+*.toc
+*.lof
+*.lot
