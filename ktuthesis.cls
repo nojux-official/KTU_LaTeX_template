@@ -9,6 +9,9 @@
 \RequirePackage{secdot}
 % Should we discourage hyphen usage or is it acceptable?
 \RequirePackage[none]{hyphenat}
+\RequirePackage{tocloft}
+% add list of figures and list of tables to ToC
+\RequirePackage[nottoc]{tocbibind}
 
 \setmainfont{Times New Roman} % the document must use times new roman font
 
@@ -31,8 +34,9 @@
 \newcommand*\@authorgenitive{\@latex@error{\noexpand\authorgenitive is not provided.}}
 
 \renewcommand{\contentsname}{Turinys}
-\renewcommand{\listfigurename}{Paveikslų sąrašas}
-\renewcommand{\listtablename}{Lentelių sąrašas}
+\renewcommand{\listfigurename}{\hfil\fontsize{12}{15}{\selectfont{Paveikslų sąrašas}}}
+\renewcommand{\listtablename}{\hfil\fontsize{12}{15}{\selectfont{Lentelių sąrašas}}}
+\renewcommand{\refname}{\hfil\fontsize{12}{15}{\selectfont{Literatūros sąrašas}}}
 
 % Try to avoid overfull.
 \emergencystretch 3em%
@@ -44,11 +48,17 @@
 \allsectionsfont{\fontsize{12}{15}\selectfont}
 \sectiondot{subsection}
 \sectiondot{subsubsection}
+\newcommand{\centersection}[1]{
+  \section*{\hfil#1}
+  \addcontentsline{toc}{section}{#1}%
+  }
 
 % Should this be 3.6mm or 4mm? Example docx is 3.6, while requirements in Moodle say 4mm, requirements in book don't mention anything
 \titlespacing{\section}{0pt}{0pt}{3.6mm}
 \titlespacing{\subsection}{0pt}{0pt}{2mm}
 \titlespacing{\subsubsection}{0pt}{0pt}{2mm}
+
+% --- TABLES ---
 
 % allow table headers and set their style to footnotesize (10px) bold
 \RequirePackage{makecell}
@@ -63,6 +73,33 @@
 \RequirePackage{caption}
 \DeclareCaptionLabelFormat{ktucaptionlabel}{#2 #1}
 \captionsetup[table]{labelformat=ktucaptionlabel,name=lentelė,labelsep=period,labelfont={bf,small},singlelinecheck=false,textfont=small,skip=1.1mm}
+
+% --- ToC ---
+\renewcommand{\cfttoctitlefont}{\hfil\bfseries\selectfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+
+% no vertical spacing between numberless sections
+\setlength\cftparskip{0pt}
+\setlength\cftbeforesecskip{0pt}
+
+% dot frequency
+\renewcommand\cftdotsep{2}
+
+% no indentations for subsections and sections
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
+\setlength{\cftsubsubsecindent}{0pt}
+
+% remove bold text in section names. Book ToC section names are bolded, should it be as well?
+\renewcommand{\cftsecfont}{\selectfont}
+\renewcommand{\cftsecpagefont}{\selectfont}
+
+% add dots after ToC section numbers
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
+
+% --- Content --- 
 
 \renewcommand\maketitle{
   % First title page
