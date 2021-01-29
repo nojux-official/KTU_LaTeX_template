@@ -6,6 +6,9 @@
 \RequirePackage{fontspec}
 \RequirePackage{sectsty}
 \RequirePackage{titlesec}
+\RequirePackage{secdot}
+% Should we discourage hyphen usage or is it acceptable?
+\RequirePackage[none]{hyphenat}
 
 \setmainfont{Times New Roman} % the document must use times new roman font
 
@@ -31,13 +34,21 @@
 \renewcommand{\listfigurename}{Paveikslų sąrašas}
 \renewcommand{\listtablename}{Lentelių sąrašas}
 
+% Try to avoid overfull.
+\emergencystretch 3em%
 \linespread{1.15}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{3.5mm}
 
-\sectionfont{\fontsize{12}{15}\selectfont}
-\titlespacing{\section}{0pt}{0pt}{0.35cm}
-\titlespacing{\subsection}{0pt}{0pt}{13.5mm}
+% --- SECTIONS ---
+\allsectionsfont{\fontsize{12}{15}\selectfont}
+\sectiondot{subsection}
+\sectiondot{subsubsection}
+
+% Should this be 3.6mm or 4mm? Example docx is 3.6, while requirements in Moodle say 4mm, requirements in book don't mention anything
+\titlespacing{\section}{0pt}{0pt}{3.6mm}
+\titlespacing{\subsection}{0pt}{0pt}{2mm}
+\titlespacing{\subsubsection}{0pt}{0pt}{2mm}
 
 % allow table headers and set their style to footnotesize (10px) bold
 \RequirePackage{makecell}
