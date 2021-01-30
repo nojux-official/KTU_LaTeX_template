@@ -12,6 +12,8 @@
 \RequirePackage{tocloft}
 % add list of figures and list of tables to ToC
 \RequirePackage[nottoc]{tocbibind}
+\RequirePackage{caption}
+\RequirePackage[lithuanian]{babel}
 
 \setmainfont{Times New Roman} % the document must use times new roman font
 
@@ -33,10 +35,15 @@
 \newcommand*\authorgenitive[1]{\gdef\@authorgenitive{#1}}
 \newcommand*\@authorgenitive{\@latex@error{\noexpand\authorgenitive is not provided.}}
 
-\renewcommand{\contentsname}{Turinys}
-\renewcommand{\listfigurename}{\hfil\fontsize{12}{15}{\selectfont{Paveikslų sąrašas}}}
-\renewcommand{\listtablename}{\hfil\fontsize{12}{15}{\selectfont{Lentelių sąrašas}}}
-\renewcommand{\refname}{\hfil\fontsize{12}{15}{\selectfont{Literatūros sąrašas}}}
+% Lithuanian captions
+\addto\captionslithuanian{%
+  \renewcommand{\figurename}{pav.}%
+  \renewcommand{\tablename}{lentelė.}
+  \renewcommand{\contentsname}{Turinys}%
+  \renewcommand{\listfigurename}{\hfil\fontsize{12}{15}{\selectfont{Paveikslų sąrašas}}}%
+  \renewcommand{\listtablename}{\hfil\fontsize{12}{15}{\selectfont{Lentelių sąrašas}}}
+  \renewcommand{\refname}{\hfil\fontsize{12}{15}{\selectfont{Literatūros sąrašas}}}
+}
 
 % Try to avoid overfull.
 \emergencystretch 3em%
@@ -77,27 +84,48 @@
 % --- ToC ---
 \renewcommand{\cfttoctitlefont}{\hfil\bfseries\selectfont}
 \renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
-
 % no vertical spacing between numberless sections
 \setlength\cftparskip{0pt}
 \setlength\cftbeforesecskip{0pt}
-
 % dot frequency
 \renewcommand\cftdotsep{2}
-
 % no indentations for subsections and sections
 \setlength{\cftsecindent}{0pt}
 \setlength{\cftsubsecindent}{0pt}
 \setlength{\cftsubsubsecindent}{0pt}
-
 % remove bold text in section names. Book ToC section names are bolded, should it be as well?
 \renewcommand{\cftsecfont}{\selectfont}
 \renewcommand{\cftsecpagefont}{\selectfont}
-
 % add dots after ToC section numbers
 \renewcommand{\cftsecaftersnum}{.}
 \renewcommand{\cftsubsecaftersnum}{.}
 \renewcommand{\cftsubsubsecaftersnum}{.}
+
+% --- FIGURES ---
+\renewcommand{\thefigure}{\arabic{figure}}
+
+% Center figures
+\g@addto@macro\@floatboxreset\centering
+
+% List of figures configuration
+\renewcommand{\cftfigaftersnum}{~pav.}
+% Looks like this value has to be fixed. Looks decent up to 99 images.
+% If anyone knows how to make this dynamic, make a PR 
+\setlength{\cftfignumwidth}{3.5em}
+% Remove indentation from LoF. Should have indents or not?
+\setlength{\cftfigindent}{0pt}
+% setup figure captions
+\captionsetup[figure]{labelsep=space, font=small, labelfont=bf, skip=0pt, justification=centering}
+
+% --- TABLES ---
+\captionsetup[table]{labelsep=space, font=small, labelfont=bf, skip=4pt, singlelinecheck=off, position=top}
+% List of tables configuration
+\renewcommand{\cfttabaftersnum}{~lentelė.}
+% Looks like this value has to be fixed. Looks decent up to 99 tables.
+% If anyone knows how to make this dynamic, make a PR 
+\setlength{\cfttabnumwidth}{4.5em}
+% Remove indentation from LoF. Should have indents or not?
+\setlength{\cfttabindent}{0pt}
 
 % --- Content --- 
 
