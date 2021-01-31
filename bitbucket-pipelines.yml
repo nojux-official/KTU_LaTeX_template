@@ -6,7 +6,7 @@
  pipelines:
    default:
      - step:
-         name: Install dependencies
+         name: Build the pdf
          script:
            - apt update
            - apt install -y --no-install-recommends software-properties-common curl
@@ -15,9 +15,6 @@
            - echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
            - apt install -y --no-install-recommends fontconfig ttf-mscorefonts-installer
            - fc-cache -f -v
-     - step:
-         name: Build the pdf
-         script:
            - latexmk -cd -e -f -xelatex -interaction=nonstopmode -synctex=1 "instructions.tex"
          artifacts:
            - instructions.pdf
