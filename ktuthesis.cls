@@ -6,6 +6,14 @@
 \RequirePackage{fontspec}
 \RequirePackage{sectsty}
 \RequirePackage{titlesec}
+\RequirePackage{secdot}
+% Discourage hyphen usage
+\RequirePackage[none]{hyphenat}
+\RequirePackage{tocloft}
+% add list of figures and list of tables to ToC
+\RequirePackage[nottoc]{tocbibind}
+\RequirePackage{caption}
+\RequirePackage[lithuanian]{babel}
 
 \setmainfont{Times New Roman} % the document must use times new roman font
 
@@ -27,17 +35,36 @@
 \newcommand*\authorgenitive[1]{\gdef\@authorgenitive{#1}}
 \newcommand*\@authorgenitive{\@latex@error{\noexpand\authorgenitive is not provided.}}
 
-\renewcommand{\contentsname}{Turinys}
-\renewcommand{\listfigurename}{Paveikslų sąrašas}
-\renewcommand{\listtablename}{Lentelių sąrašas}
+% Lithuanian captions
+\addto\captionslithuanian{%
+  \renewcommand{\figurename}{pav.}%
+  \renewcommand{\tablename}{lentelė.}
+  \renewcommand{\contentsname}{Turinys}%
+  \renewcommand{\listfigurename}{\hfil\fontsize{12}{15}{\selectfont{Paveikslų sąrašas}}}%
+  \renewcommand{\listtablename}{\hfil\fontsize{12}{15}{\selectfont{Lentelių sąrašas}}}
+  \renewcommand{\refname}{\hfil\fontsize{12}{15}{\selectfont{Literatūros sąrašas}}}
+}
 
+% Try to avoid overfull.
+\emergencystretch 3em%
 \linespread{1.15}
 \setlength{\parindent}{0cm}
 \setlength{\parskip}{3.5mm}
 
-\sectionfont{\fontsize{12}{15}\selectfont}
-\titlespacing{\section}{0pt}{0pt}{0.35cm}
-\titlespacing{\subsection}{0pt}{0pt}{13.5mm}
+% --- SECTIONS ---
+\allsectionsfont{\fontsize{12}{15}\selectfont}
+\sectiondot{subsection}
+\sectiondot{subsubsection}
+\newcommand{\centersection}[1]{
+  \section*{\hfil#1}
+  \addcontentsline{toc}{section}{#1}%
+  }
+
+\titlespacing{\section}{0pt}{0pt}{3.5mm}
+\titlespacing{\subsection}{0pt}{0pt}{2mm}
+\titlespacing{\subsubsection}{0pt}{0pt}{2mm}
+
+% --- TABLES ---
 
 % allow table headers and set their style to footnotesize (10px) bold
 \RequirePackage{makecell}
@@ -49,9 +76,52 @@
 % use tabu for easy formatting of full page width tables
 \RequirePackage{tabu}
 % format table captions to effectively be "\textbf{1 lentelė.} Konkurentų apžvalga" in small size
-\RequirePackage{caption}
 \DeclareCaptionLabelFormat{ktucaptionlabel}{#2 #1}
 \captionsetup[table]{labelformat=ktucaptionlabel,name=lentelė,labelsep=period,labelfont={bf,small},singlelinecheck=false,textfont=small,skip=1.1mm}
+% List of tables configuration
+\renewcommand{\cfttabaftersnum}{~lentelė.}
+\renewcommand{\cfttabpresnum}{\bfseries}
+% Looks like this value has to be fixed. Looks decent up to 99 tables.
+% If anyone knows how to make this dynamic, make a PR 
+\setlength{\cfttabnumwidth}{4.5em}
+% Remove indentation from LoT
+\setlength{\cfttabindent}{0pt}
+
+% --- ToC ---
+\renewcommand{\cfttoctitlefont}{\hfil\bfseries\selectfont}
+\renewcommand{\cftsecleader}{\cftdotfill{\cftdotsep}}
+% no vertical spacing between numberless sections
+\setlength\cftparskip{0pt}
+\setlength\cftbeforesecskip{0pt}
+% dot frequency
+\renewcommand\cftdotsep{2}
+% no indentations for subsections and sections
+\setlength{\cftsecindent}{0pt}
+\setlength{\cftsubsecindent}{0pt}
+\setlength{\cftsubsubsecindent}{0pt}
+% add dots after ToC section numbers
+\renewcommand{\cftsecaftersnum}{.}
+\renewcommand{\cftsubsecaftersnum}{.}
+\renewcommand{\cftsubsubsecaftersnum}{.}
+
+% --- FIGURES ---
+\renewcommand{\thefigure}{\arabic{figure}}
+
+% Center figures
+\g@addto@macro\@floatboxreset\centering
+
+% List of figures configuration
+\renewcommand{\cftfigaftersnum}{~pav.}
+\renewcommand{\cftfigpresnum}{\bfseries}
+% Looks like this value has to be fixed. Looks decent up to 99 images.
+% If anyone knows how to make this dynamic, make a PR 
+\setlength{\cftfignumwidth}{3.5em}
+% Remove indentation from LoF
+\setlength{\cftfigindent}{0pt}
+% setup figure captions
+\captionsetup[figure]{labelsep=space, font=small, labelfont=bf, skip=0pt, justification=centering}
+
+% --- Content --- 
 
 \renewcommand\maketitle{
   % First title page
