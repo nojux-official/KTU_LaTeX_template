@@ -7,7 +7,7 @@
 \RequirePackage{sectsty}
 \RequirePackage{titlesec}
 \RequirePackage{secdot}
-% Should we discourage hyphen usage or is it acceptable?
+% Discourage hyphen usage
 \RequirePackage[none]{hyphenat}
 \RequirePackage{tocloft}
 % add list of figures and list of tables to ToC
@@ -60,8 +60,7 @@
   \addcontentsline{toc}{section}{#1}%
   }
 
-% Should this be 3.6mm or 4mm? Example docx is 3.6, while requirements in Moodle say 4mm, requirements in book don't mention anything
-\titlespacing{\section}{0pt}{0pt}{3.6mm}
+\titlespacing{\section}{0pt}{0pt}{3.5mm}
 \titlespacing{\subsection}{0pt}{0pt}{2mm}
 \titlespacing{\subsubsection}{0pt}{0pt}{2mm}
 
@@ -77,9 +76,16 @@
 % use tabu for easy formatting of full page width tables
 \RequirePackage{tabu}
 % format table captions to effectively be "\textbf{1 lentelė.} Konkurentų apžvalga" in small size
-\RequirePackage{caption}
 \DeclareCaptionLabelFormat{ktucaptionlabel}{#2 #1}
 \captionsetup[table]{labelformat=ktucaptionlabel,name=lentelė,labelsep=period,labelfont={bf,small},singlelinecheck=false,textfont=small,skip=1.1mm}
+% List of tables configuration
+\renewcommand{\cfttabaftersnum}{~lentelė.}
+\renewcommand{\cfttabpresnum}{\bfseries}
+% Looks like this value has to be fixed. Looks decent up to 99 tables.
+% If anyone knows how to make this dynamic, make a PR 
+\setlength{\cfttabnumwidth}{4.5em}
+% Remove indentation from LoT
+\setlength{\cfttabindent}{0pt}
 
 % --- ToC ---
 \renewcommand{\cfttoctitlefont}{\hfil\bfseries\selectfont}
@@ -93,9 +99,6 @@
 \setlength{\cftsecindent}{0pt}
 \setlength{\cftsubsecindent}{0pt}
 \setlength{\cftsubsubsecindent}{0pt}
-% remove bold text in section names. Book ToC section names are bolded, should it be as well?
-\renewcommand{\cftsecfont}{\selectfont}
-\renewcommand{\cftsecpagefont}{\selectfont}
 % add dots after ToC section numbers
 \renewcommand{\cftsecaftersnum}{.}
 \renewcommand{\cftsubsecaftersnum}{.}
@@ -109,23 +112,14 @@
 
 % List of figures configuration
 \renewcommand{\cftfigaftersnum}{~pav.}
+\renewcommand{\cftfigpresnum}{\bfseries}
 % Looks like this value has to be fixed. Looks decent up to 99 images.
 % If anyone knows how to make this dynamic, make a PR 
 \setlength{\cftfignumwidth}{3.5em}
-% Remove indentation from LoF. Should have indents or not?
+% Remove indentation from LoF
 \setlength{\cftfigindent}{0pt}
 % setup figure captions
 \captionsetup[figure]{labelsep=space, font=small, labelfont=bf, skip=0pt, justification=centering}
-
-% --- TABLES ---
-\captionsetup[table]{labelsep=space, font=small, labelfont=bf, skip=4pt, singlelinecheck=off, position=top}
-% List of tables configuration
-\renewcommand{\cfttabaftersnum}{~lentelė.}
-% Looks like this value has to be fixed. Looks decent up to 99 tables.
-% If anyone knows how to make this dynamic, make a PR 
-\setlength{\cfttabnumwidth}{4.5em}
-% Remove indentation from LoF. Should have indents or not?
-\setlength{\cfttabindent}{0pt}
 
 % --- Content --- 
 
