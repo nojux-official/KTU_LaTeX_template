@@ -12,6 +12,7 @@
            - apt install -y --no-install-recommends software-properties-common curl
            - apt-add-repository multiverse
            - apt update
+           - apt install -y apt-transport-https ca-certificates
            - echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
            - apt install -y --no-install-recommends fontconfig ttf-mscorefonts-installer
            - fc-cache -f -v
