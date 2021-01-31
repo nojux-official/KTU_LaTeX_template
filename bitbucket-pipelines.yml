@@ -8,6 +8,7 @@
      - step:
          name: Install dependencies
          script:
+           - apt update
            - apt install -y --no-install-recommends software-properties-common curl
            - apt-add-repository multiverse
            - apt update
