@@ -7,7 +7,7 @@
 \RequirePackage{sectsty}
 \RequirePackage{titlesec}
 
-\setmainfont{Times New Roman}
+\setmainfont{Times New Roman} % the document must use times new roman font
 
 \definecolor{brown}{HTML}{D4AF37}
 \definecolor{gray}{HTML}{808080}
@@ -38,6 +38,20 @@
 \sectionfont{\fontsize{12}{15}\selectfont}
 \titlespacing{\section}{0pt}{0pt}{0.35cm}
 \titlespacing{\subsection}{0pt}{0pt}{13.5mm}
+
+% allow table headers and set their style to footnotesize (10px) bold
+\RequirePackage{makecell}
+\renewcommand\theadfont{\footnotesize\bfseries}
+% add spacing to table cell content, this should be 1.1 mm, but arraystretch accepts a coefficient rather than mm
+\let\oldtabular\tabular
+\renewcommand{\tabular}{\footnotesize\oldtabular}
+\renewcommand{\arraystretch}{1.1}
+% use tabu for easy formatting of full page width tables
+\RequirePackage{tabu}
+% format table captions to effectively be "\textbf{1 lentelė.} Konkurentų apžvalga" in small size
+\RequirePackage{caption}
+\DeclareCaptionLabelFormat{ktucaptionlabel}{#2 #1}
+\captionsetup[table]{labelformat=ktucaptionlabel,name=lentelė,labelsep=period,labelfont={bf,small},singlelinecheck=false,textfont=small,skip=1.1mm}
 
 \renewcommand\maketitle{
   % First title page
