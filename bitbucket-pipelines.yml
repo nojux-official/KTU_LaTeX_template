@@ -1,0 +1,21 @@
+ options:
+   docker: true
+
+ image: kaspersoerensen/latex-docker
+
+ pipelines:
+   default:
+     - step:
+         name: Build the pdf
+         script:
+           - latexmk -cd -e -f -xelatex -interaction=nonstopmode -synctex=1 "instructions.tex"
+         artifacts:
+           - instructions.pdf
+     - step:
+         name: Upload
+         script:
+           - pipe: atlassian/bitbucket-upload-file:0.1.2
+             variables:
+               BITBUCKET_USERNAME: 'ryselis'
+               BITBUCKET_APP_PASSWORD: 'WdVZPqRJ6sy5EzPzmYCe '
+               FILENAME: 'instructions.pdf'
