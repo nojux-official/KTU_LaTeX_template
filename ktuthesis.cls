@@ -1,5 +1,5 @@
 \LoadClass[12pt,a4paper]{article}
-\RequirePackage[left=3cm,right=1cm,top=1.5cm,bottom=1.5cm]{geometry}
+\RequirePackage[includefoot, left=3cm,right=1cm,top=1.5cm,bottom=1.5cm]{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
 \RequirePackage{scrextend}
@@ -42,13 +42,14 @@
   \renewcommand{\contentsname}{Turinys}%
   \renewcommand{\listfigurename}{\hfil\fontsize{12}{15}{\selectfont{Paveikslų sąrašas}}}%
   \renewcommand{\listtablename}{\hfil\fontsize{12}{15}{\selectfont{Lentelių sąrašas}}}
-  \renewcommand{\refname}{\hfil\fontsize{12}{15}{\selectfont{Literatūros sąrašas}}}
 }
 
 % Try to avoid overfull.
 \emergencystretch 3em%
 \linespread{1.15}
 \setlength{\parindent}{0cm}
+% Fix spacing for sections by adding parfill option
+\RequirePackage[parfill]{parskip}
 \setlength{\parskip}{3.5mm}
 
 % --- SECTIONS ---
@@ -60,9 +61,9 @@
   \addcontentsline{toc}{section}{#1}%
   }
 
-\titlespacing{\section}{0pt}{0pt}{3.5mm}
-\titlespacing{\subsection}{0pt}{0pt}{2mm}
-\titlespacing{\subsubsection}{0pt}{0pt}{2mm}
+\titlespacing{\section}{0pt}{3.5mm}{3.5mm}
+\titlespacing{\subsection}{0pt}{2mm}{2mm}
+\titlespacing{\subsubsection}{0pt}{2mm}{2mm}
 
 % --- TABLES ---
 
@@ -73,8 +74,8 @@
 \let\oldtabular\tabular
 \renewcommand{\tabular}{\footnotesize\oldtabular}
 \renewcommand{\arraystretch}{1.1}
-% use tabu for easy formatting of full page width tables
-\RequirePackage{tabu}
+% use tabularx for easy formatting of full page width tables
+\RequirePackage{tabularx}
 % format table captions to effectively be "\textbf{1 lentelė.} Konkurentų apžvalga" in small size
 \DeclareCaptionLabelFormat{ktucaptionlabel}{#2 #1}
 \captionsetup[table]{labelformat=ktucaptionlabel,name=lentelė,labelsep=period,labelfont={bf,small},singlelinecheck=false,textfont=small,skip=1.1mm}
@@ -120,6 +121,32 @@
 \setlength{\cftfigindent}{0pt}
 % setup figure captions
 \captionsetup[figure]{labelsep=space, font=small, labelfont=bf, skip=0pt, justification=centering}
+
+% --- BIBLIOGRAPHY ---
+\RequirePackage[
+  backend=biber,
+  style=iso-numeric,
+  maxbibnames=4,
+]{biblatex}
+\DeclareNameAlias{author}{sortname}
+\RequirePackage{csquotes}
+
+% --- PAGE NUMBERS ---
+\RequirePackage{fancyhdr}
+\fancyhead{}
+\lfoot{} \cfoot{} \rfoot{\thepage}
+\pagestyle{fancy}
+% apply right-aligned page number to ToC, LoF, LoT
+\fancypagestyle{plain}{\pagestyle{fancy}}
+% remove fancyhdr headrule
+\renewcommand{\headrulewidth}{0pt}
+% don't indent footnotes
+\RequirePackage[bottom,hang,flushmargin]{footmisc}
+
+% Require enumitem for item list configuration
+\RequirePackage{enumitem}
+\setlist[itemize]{noitemsep, topsep=0pt}
+\setlist[enumerate]{noitemsep, topsep=0pt}
 
 % --- Content --- 
 

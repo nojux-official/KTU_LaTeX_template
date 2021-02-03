@@ -9,3 +9,8 @@
 *.lof
 *.lot
 .vscode
+*.bcf
+*.run.xml
+*.bbl
+*.blg
+*.out
