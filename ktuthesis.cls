@@ -66,16 +66,15 @@
 \titlespacing{\subsubsection}{0pt}{2mm}{2mm}
 
 % --- TABLES ---
-
+% use tabularx for easy formatting of full page width tables
+\RequirePackage{tabularx}
 % allow table headers and set their style to footnotesize (10px) bold
 \RequirePackage{makecell}
 \renewcommand\theadfont{\footnotesize\bfseries}
 % add spacing to table cell content, this should be 1.1 mm, but arraystretch accepts a coefficient rather than mm
-\let\oldtabular\tabular
-\renewcommand{\tabular}{\footnotesize\oldtabular}
+\let\oldtabular\tabularx
+\renewcommand{\tabularx}{\footnotesize\oldtabular}
 \renewcommand{\arraystretch}{1.1}
-% use tabularx for easy formatting of full page width tables
-\RequirePackage{tabularx}
 % format table captions to effectively be "\textbf{1 lentelė.} Konkurentų apžvalga" in small size
 \DeclareCaptionLabelFormat{ktucaptionlabel}{#2 #1}
 \captionsetup[table]{labelformat=ktucaptionlabel,name=lentelė,labelsep=period,labelfont={bf,small},singlelinecheck=false,textfont=small,skip=1.1mm}
@@ -83,7 +82,7 @@
 \renewcommand{\cfttabaftersnum}{~lentelė.}
 \renewcommand{\cfttabpresnum}{\bfseries}
 % Looks like this value has to be fixed. Looks decent up to 99 tables.
-% If anyone knows how to make this dynamic, make a PR 
+% If anyone knows how to make this dynamic, make a PR
 \setlength{\cfttabnumwidth}{4.5em}
 % Remove indentation from LoT
 \setlength{\cfttabindent}{0pt}
@@ -115,7 +114,7 @@
 \renewcommand{\cftfigaftersnum}{~pav.}
 \renewcommand{\cftfigpresnum}{\bfseries}
 % Looks like this value has to be fixed. Looks decent up to 99 images.
-% If anyone knows how to make this dynamic, make a PR 
+% If anyone knows how to make this dynamic, make a PR
 \setlength{\cftfignumwidth}{3.5em}
 % Remove indentation from LoF
 \setlength{\cftfigindent}{0pt}
@@ -148,12 +147,17 @@
 \setlist[itemize]{noitemsep, topsep=0pt}
 \setlist[enumerate]{noitemsep, topsep=0pt}
 
-% --- Content --- 
+% update style for enumerate - it should have no extra indent
+\setlist[enumerate,1]{leftmargin=*}
+% force each section to start on a new page
+\newcommand{\sectionbreak}{\clearpage}
+
+% --- Content ---
 
 \renewcommand\maketitle{
   % First title page
   \thispagestyle{empty}  % hide page number
-  {\parskip=2.1mm
+  {\parskip=0mm
     \begin{center}
       \vspace*{7.1mm}
 
@@ -162,11 +166,13 @@
       \vspace{10.6mm}
       \textbf{Kauno technologijos universitetas}
 
+      \vspace{2.1mm}
       Informatikos fakultetas
       \vspace{33.5mm}
 
       {\LARGE \textbf{\@title}}
 
+      \vspace{2.1mm}
       {\large Baigiamasis bakalauro studijų projektas}
       \vspace{33.1mm}
 
@@ -174,27 +180,29 @@
       \vspace{9mm}
 
       \parbox[s]{9cm}{\centering \textbf{\@author}}
+      \vspace{2.1mm}
 
       \@authortext
-      \vspace{8.6mm}
+      \vspace{6.5mm}
 
       \parbox[s]{9cm}{\centering \textbf{\@supervisor}}
+      \vspace{2.1mm}
 
       \@supervisortext
-      \vspace{8.6mm}
+      \vspace{6.5mm}
 
       \noindent{\textcolor{brown}{\rule{9cm}{0.5pt}}}
 
       \vfill
 
       \textbf{Kaunas, \the\year}
-      \vspace{16mm}
+      \vspace{7mm}
     \end{center}
   }
   \clearpage
   % second page
   \thispagestyle{empty}
-  {\parskip=2.1mm
+  {\parskip=0mm
     \begin{center}
       \vspace*{7.1mm}
 
@@ -202,16 +210,19 @@
 
       \vspace{10.6mm}
       \textbf{Kauno technologijos universitetas}
+      \vspace{2.1mm}
 
       Informatikos fakultetas
-      \vspace{30.5mm}
+      \vspace{33mm}
 
       {\LARGE \textbf{\@title}}
+      \vspace{2.1mm}
 
       {\large Baigiamasis bakalauro studijų projektas}
+      \vspace{2.1mm}
 
       {\large Programų sistemos (612I30002)}
-      \vspace{16.5mm}
+      \vspace{18mm}
 
     \end{center}
     \begin{addmargin}[8cm]{0cm}
@@ -219,16 +230,19 @@
       \vspace{6mm}
 
       \noindent{\parbox[s]{7cm}{\textbf{\@author}}}
+      \vspace{2.1mm}
 
       \noindent{\@authortext}
       \vspace{8.6mm}
 
       \noindent{\parbox[s]{7cm}{\textbf{\@supervisor}}}
+      \vspace{2.1mm}
 
       \noindent{\@supervisortext}
       \vspace{8.6mm}
 
       \noindent{\parbox[s]{7cm}{\textbf{\@reviewer}}}
+      \vspace{2.1mm}
 
       \noindent{\@reviewertext}
       \vspace{6mm}
@@ -239,7 +253,7 @@
     \begin{center}
       \vfill
       \textbf{Kaunas, \the\year}
-      \vspace{12mm}
+      \vspace{7mm}
     \end{center}
   }
   \clearpage
@@ -250,19 +264,18 @@
 
       \includegraphics{logo}
 
-      \vspace{10.6mm}
+      \vspace{8.4mm}
       \textbf{Kauno technologijos universitetas}
 
       Informatikos fakultetas
 
       \@author
-      \vspace{26.8mm}
+      \vspace{24.6mm}
 
       {\LARGE \textbf{\@title}}
-      \vspace{2.1mm}
 
       {\large{Akademinio sąžiningumo deklaracija}}
-      \vspace{14.1mm}
+      \vspace{11.9mm}
     \end{center}
   }
 
@@ -275,13 +288,13 @@
   Aš suprantu, kad išaiškėjus nesąžiningumo faktui, man bus taikomos nuobaudos, remiantis Kauno technologijos
   universitete galiojančia tvarka.
 
-  \vspace{20mm}
+  \vspace{7mm}
 
   \begin{addmargin}[56.6mm]{0cm}
     \begin{tabular}{p{70.7mm}@{\hskip 7.1mm}p{35.7mm}}
       \hrulefill & \hrulefill \\
-      \multicolumn{1}{c}{\textcolor{gray}{(vardą ir pavardę įrašyti ranka)}} &
-      \multicolumn{1}{c}{\textcolor{gray}{(parašas)}}
+      \multicolumn{1}{c}{\textcolor{gray}{{\normalsize (vardą ir pavardę įrašyti ranka)}}} &
+      \multicolumn{1}{c}{\textcolor{gray}{{\normalsize (parašas)}}}
     \end{tabular}
   \end{addmargin}
   \clearpage
