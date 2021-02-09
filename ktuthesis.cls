@@ -40,8 +40,8 @@
   \renewcommand{\figurename}{pav.}%
   \renewcommand{\tablename}{lentelė.}
   \renewcommand{\contentsname}{Turinys}%
-  \renewcommand{\listfigurename}{\hfil\fontsize{12}{15}{\selectfont{Paveikslų sąrašas}}}%
-  \renewcommand{\listtablename}{\hfil\fontsize{12}{15}{\selectfont{Lentelių sąrašas}}}
+  \renewcommand{\listfigurename}{\texorpdfstring{\hfil}{\space}\fontsize{12}{15}{\selectfont{Paveikslų sąrašas}}}%
+  \renewcommand{\listtablename}{\texorpdfstring{\hfil}{\space}\fontsize{12}{15}{\selectfont{Lentelių sąrašas}}}
 }
 
 % Try to avoid overfull.
@@ -129,6 +129,7 @@
 ]{biblatex}
 \DeclareNameAlias{author}{sortname}
 \RequirePackage{csquotes}
+\DeclareQuoteAlias{czech}{lithuanian}
 
 % --- PAGE NUMBERS ---
 \RequirePackage{fancyhdr}
