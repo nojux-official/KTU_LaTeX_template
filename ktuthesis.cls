@@ -1,5 +1,5 @@
 \LoadClass[12pt,a4paper]{article}
-\RequirePackage[includefoot, left=3cm,right=1cm,top=1.5cm,bottom=1.5cm]{geometry}
+\RequirePackage[includefoot, left=3cm,right=1.8cm,top=1.8cm,bottom=1.8cm]{geometry}
 \RequirePackage{graphicx}
 \RequirePackage{xcolor}
 \RequirePackage{scrextend}
@@ -160,7 +160,7 @@
   \thispagestyle{empty}  % hide page number
   {\parskip=0mm
     \begin{center}
-      \vspace*{7.1mm}
+      \vspace*{6.8mm}
 
       \includegraphics{logo}
 
@@ -205,7 +205,7 @@
   \thispagestyle{empty}
   {\parskip=0mm
     \begin{center}
-      \vspace*{7.1mm}
+      \vspace*{6.8mm}
 
       \includegraphics{logo}
 
@@ -261,7 +261,7 @@
   \thispagestyle{empty}
   {\parskip=2.1mm
     \begin{center}
-      \vspace*{7.1mm}
+      \vspace*{6.8mm}
 
       \includegraphics{logo}
 
