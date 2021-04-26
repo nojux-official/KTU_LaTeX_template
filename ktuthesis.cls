@@ -14,6 +14,7 @@
 \RequirePackage[nottoc]{tocbibind}
 \RequirePackage{caption}
 \RequirePackage[lithuanian]{babel}
+\RequirePackage{chngcntr}
 
 \setmainfont{Times New Roman} % the document must use times new roman font
 
@@ -83,9 +84,12 @@
 \renewcommand{\cfttabpresnum}{\bfseries}
 % Looks like this value has to be fixed. Looks decent up to 99 tables.
 % If anyone knows how to make this dynamic, make a PR
-\setlength{\cfttabnumwidth}{4.5em}
+\setlength{\cfttabnumwidth}{5.3em}
 % Remove indentation from LoT
 \setlength{\cfttabindent}{0pt}
+
+% add section number to table caption number
+\counterwithin{table}{section}  
 
 % --- ToC ---
 \renewcommand{\cfttoctitlefont}{\hfil\bfseries\selectfont}
@@ -115,11 +119,15 @@
 \renewcommand{\cftfigpresnum}{\bfseries}
 % Looks like this value has to be fixed. Looks decent up to 99 images.
 % If anyone knows how to make this dynamic, make a PR
-\setlength{\cftfignumwidth}{3.5em}
+\setlength{\cftfignumwidth}{4em}
 % Remove indentation from LoF
 \setlength{\cftfigindent}{0pt}
 % setup figure captions
 \captionsetup[figure]{labelsep=space, font=small, labelfont=bf, skip=0pt, justification=centering}
+
+% add section number to figure caption number
+\counterwithin{figure}{section}  
+
 
 % --- BIBLIOGRAPHY ---
 \RequirePackage[
