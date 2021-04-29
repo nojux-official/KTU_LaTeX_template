@@ -157,7 +157,7 @@
 \setlist[enumerate]{noitemsep, topsep=0pt}
 
 % update style for enumerate - it should have no extra indent
-\setlist[enumerate,1]{leftmargin=*}
+\setlist[enumerate,1]{align=left}
 % force each section to start on a new page
 \newcommand{\sectionbreak}{\clearpage}
 
