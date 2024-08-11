@@ -2,39 +2,46 @@
 
 \newcommand{\universitetas}{Kauno technologijos universitetas}
 \newcommand{\fakultetas}{Informatikos fakultetas}
-\newcommand{\katedra}{Kompiuterių katedra}
-\newcommand{\pavadinimas}{LaTeX naudojimo pavyzdys}
-\newcommand{\tipas}{(ne)Laboratorinis darbas}
-\newcommand{\grupe}{XXX X/X~}
-\newcommand{\atliko}{Vardenis Pavardenis}
-\newcommand{\prieme}{dėst. Vardenis Pavardenis}
+\newcommand{\modulioKodas}{Modulio P170B400}
+\newcommand{\pavadinimas}{„Algoritmų sudarymas ir analizė“}
+\newcommand{\darboTipas}{Laboratorinio darbo ataskaita}
+\newcommand{\laboratorinisDarbas}{Ketvirtas laboratorinis darbas}
+\newcommand{\autorius}{Vardenis Pavardenis IFF-2/2}
+\newcommand{\statusas}{Studentas}
+\newcommand{\destytojasOne}{Asist. Pavardenis Vardenis}
+\newcommand{\destytojasTwo}{doc. Pavardenis Vardenis}
+\newcommand{\destytojai}{Dėstytojai}
 \newcommand{\miestas}{Kaunas}
-\newcommand{\metai}{\the\year}
+\newcommand{\metai}{2024}
 
 \renewcommand{\headrulewidth}{0pt}
 
-    \onehalfspacing
-	\center
-	\includegraphics[width=20mm]{KTU logotype_RGB_without text_BLACK} \\
-    \LARGE\textbf{\MakeUppercase{\universitetas}} \\ [5mm]
-    \Large\textbf{\MakeUppercase{\fakultetas}} \\ [5mm]	
-    \large\textbf{\MakeUppercase{\katedra}} \vfill
-	{\fontsize{22}{26}\centering\bfseries\MakeUppercase{\pavadinimas}\par} \vfill
-    {\centering \Large \tipas} \vfill
-    
-	\flushright	
-	{\center	
-		\normalsize
-		\begin{tabular}{l}\onehalfspacing	
-			\textbf{Atliko:} \\[1.5pt]
-			\grupe grupės stud. \\
-			\atliko \\[1cm]
+\onehalfspacing
+\center
+\includegraphics[width=30mm]{KTU logotype_RGB_without text_BLACK} \\ [5mm]
+\textbf{\universitetas} \\ [5mm]
+\textbf{\fakultetas} \vfill
 
-			\textbf{Priėmė}\\[1.5pt]
-			\prieme
-		\end{tabular}
-	}
-	\vfill
-	\center
-	\normalsize\textbf{\MakeUppercase{\miestas}, \metai}
+\textbf{\modulioKodas} \\ [5mm]
+\LARGE\textbf{\pavadinimas} \\ [10mm]
+\normalsize\textbf{\darboTipas} \\ [5mm]
+\textbf{\laboratorinisDarbas} \vfill
+
+\begin{flushright}
+\begin{tabular}{l}
+\rule{0.9\textwidth}{0.4pt} \\ [0.5cm]
+\textbf{\autorius} \\ [5pt]
+\textbf{\statusas} \\ [15pt]
+\textbf{\destytojasOne} \\ [5pt]
+\textbf{\destytojasTwo} \\ [5pt]
+\textbf{\destytojai} \\ [1.5cm]
+\rule{0.9\textwidth}{0.4pt}
+\end{tabular}
+\end{flushright}
+
+\vfill
+\center
+\textbf{\miestas} \\
+\textbf{\metai}
+
 \end{titlepage}
