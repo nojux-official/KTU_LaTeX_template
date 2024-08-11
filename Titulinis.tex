@@ -1,0 +1,40 @@
+\begin{titlepage}
+
+\newcommand{\universitetas}{Kauno technologijos universitetas}
+\newcommand{\fakultetas}{Informatikos fakultetas}
+\newcommand{\katedra}{Kompiuterių katedra}
+\newcommand{\pavadinimas}{LaTeX naudojimo pavyzdys}
+\newcommand{\tipas}{(ne)Laboratorinis darbas}
+\newcommand{\grupe}{XXX X/X~}
+\newcommand{\atliko}{Vardenis Pavardenis}
+\newcommand{\prieme}{dėst. Vardenis Pavardenis}
+\newcommand{\miestas}{Kaunas}
+\newcommand{\metai}{\the\year}
+
+\renewcommand{\headrulewidth}{0pt}
+
+    \onehalfspacing
+	\center
+	\includegraphics[width=20mm]{KTU logotype_RGB_without text_BLACK} \\
+    \LARGE\textbf{\MakeUppercase{\universitetas}} \\ [5mm]
+    \Large\textbf{\MakeUppercase{\fakultetas}} \\ [5mm]	
+    \large\textbf{\MakeUppercase{\katedra}} \vfill
+	{\fontsize{22}{26}\centering\bfseries\MakeUppercase{\pavadinimas}\par} \vfill
+    {\centering \Large \tipas} \vfill
+    
+	\flushright	
+	{\center	
+		\normalsize
+		\begin{tabular}{l}\onehalfspacing	
+			\textbf{Atliko:} \\[1.5pt]
+			\grupe grupės stud. \\
+			\atliko \\[1cm]
+
+			\textbf{Priėmė}\\[1.5pt]
+			\prieme
+		\end{tabular}
+	}
+	\vfill
+	\center
+	\normalsize\textbf{\MakeUppercase{\miestas}, \metai}
+\end{titlepage}
