@@ -101,6 +101,26 @@
     language=[Sharp]C,
 }
 
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{backcolour},
+    commentstyle=\color{codegray},
+    keywordstyle=\color{blue},
+    numberstyle=\tiny\color{codegray},
+    stringstyle=\color{codepurple},
+    basicstyle=\ttfamily\footnotesize,
+    breakatwhitespace=false,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=5pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=Python,
+}
+
 % Define a custom command to include code from a file with a specified style
 \newcommand{\code}[2]{
     \lstinputlisting[style=#2]{#1}
@@ -161,9 +181,11 @@ Parašyti efektyvias rekursinių procedūrų realizacijas, nenaudojant jokių gr
 
 equilateralTriangle bus žymimas $T_eqtriangle(k_x0, ky0, kx1, ky1).$
 
-
 \code{kodas/example.cs}{csharpstyle}
 
+
+Python:
+\code{kodas/example.py}{pythonstyle}
 
 
  
