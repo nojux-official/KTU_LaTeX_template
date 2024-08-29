@@ -1,8 +1,33 @@
+%%%%%%%%%%%%%%
+%            %
+%   LAYOUT   %
+%            %
+%%%%%%%%%%%%%%
+
 \documentclass[a4paper,12pt]{article}
 \usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
+
+
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%   ENCODING   %
+%              %
+%%%%%%%%%%%%%%%%
 
 \usepackage[T1]{fontenc}    % Use T1 encoding
 \usepackage[utf8]{inputenc} % Use UTF-8 encoding for input
+
+
+
+
+%%%%%%%%%%%%%%
+%            %
+%   IMAGES   %
+%            %
+%%%%%%%%%%%%%%
 
 \usepackage{graphicx}
 % Define a new command for inserting an image
@@ -15,21 +40,39 @@
 \newcommand{\imgw}[2]{
     \begin{figure}[h!]
         \centering
-        \includegraphics[width=#2\textwidth]{#1}  % image file path
+        \includegraphics[width=#2\textwidth]{#1}
     \end{figure}
 }
 \newcommand{\imgc}[4]{
     \begin{figure}[h!]
         \centering
-        \includegraphics[width=#2\textwidth]{#1}  % image file path
+        \includegraphics[width=#2\textwidth]{#1}
         \caption{#3}  % caption
         \label{#4}  % label
     \end{figure}
 }
 
+
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%   CAPTIONS   %
+%              %
+%%%%%%%%%%%%%%%%
+
 \usepackage{caption}
 \captionsetup[figure]{labelfont=bf}  % Make the figure number bold
 \captionsetup[table]{labelfont=bf}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         %
+%   SYNTAX HIGHLIGHTING   %
+%                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
 \usepackage{listings}
 \usepackage{xcolor}
@@ -60,11 +103,23 @@
 
 
 
+
+%%%%%%%%%%%%%%%%%%%
+%                 %
+%   TRANSLATION   %
+%                 %
+%%%%%%%%%%%%%%%%%%%
+
 \usepackage[lithuanian]{babel} % Vertimas tituliniui ir antraštėms
 
-\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
 
 
+
+%%%%%%%%%%%%%%%
+%             %
+%   CONTENT   %
+%             %
+%%%%%%%%%%%%%%%
 
 \begin{document}
 
