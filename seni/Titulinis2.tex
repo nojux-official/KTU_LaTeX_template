@@ -1,0 +1,56 @@
+\documentclass[a4paper,12pt]{article}
+\usepackage{graphicx}
+\usepackage{setspace}
+\usepackage[utf8]{inputenc}
+\usepackage[lithuanian]{babel}
+\usepackage{titlesec}
+\usepackage{fancyhdr}
+
+\begin{document}
+
+\begin{titlepage}
+
+\newcommand{\universitetas}{Kauno technologijos universitetas}
+\newcommand{\fakultetas}{Fakulteto pavadinimas}
+\newcommand{\katedra}{Katedros pavadinimas}
+\newcommand{\modulioKodas}{Modulio kodas}
+\newcommand{\pavadinimas}{Laboratorinio darbo pavadinimas}
+\newcommand{\darboNr}{Laboratorinis darbas Nr. X}
+\newcommand{\atliko}{Vardenis Pavardenis}
+\newcommand{\autorius}{Darbo autorius / autorė}
+\newcommand{\prieme}{Pareigų sutrumpinimas Vardenis Pavardenis}
+\newcommand{\miestas}{Miestas}
+\newcommand{\metai}{Metai}
+
+\renewcommand{\headrulewidth}{0pt}
+
+\onehalfspacing
+\center
+\textbf{\universitetas} \\ [5mm]
+\textbf{\fakultetas} \\ [5mm]
+\textbf{\katedra} \vfill
+
+\normalsize
+\textbf{\modulioKodas} \\ [5mm]
+\LARGE\textbf{\pavadinimas} \\ [5mm]
+\normalsize\textbf{\darboNr} \vfill
+
+\begin{tabular}{p{10cm}}
+\hline
+\\[0.5cm]
+\textbf{\atliko} \\[5pt]
+\autorius \\[1.5cm]
+\hline
+\\[0.5cm]
+\textbf{Darbą priėmė:} \\[5pt]
+\prieme \\[1.5cm]
+\hline
+\end{tabular}
+
+\vfill
+\center
+\textbf{\miestas}, \textbf{\metai}
+
+\end{titlepage}
+
+\end{document}
