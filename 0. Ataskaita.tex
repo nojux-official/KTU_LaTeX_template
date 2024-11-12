@@ -74,46 +74,29 @@
 %                         %
 %%%%%%%%%%%%%%%%%%%%%%%%%%%
 
+
 \usepackage{listings}
 \usepackage{xcolor}
 
-\definecolor{codegray}{rgb}{0.5,0.5,0.5}
-\definecolor{codepurple}{rgb}{0.58,0,0.82}
-\definecolor{backcolour}{rgb}{0.95,0.95,0.92}
 
-\lstdefinestyle{csharpstyle}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegray},
-    keywordstyle=\color{blue},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
-    basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,
-    breaklines=true,
-    captionpos=b,
-    keepspaces=true,
-    numbers=left,
-    numbersep=5pt,
-    showspaces=false,
-    showstringspaces=false,
-    showtabs=false,
-    tabsize=2,
-    language=[Sharp]C,
-}
+\definecolor{background}{HTML}{F7F9FB} % Light background
+\definecolor{keyword}{HTML}{0D47A1} % Deep blue for keywords
+\definecolor{string}{HTML}{388E3C} % Green for strings
+\definecolor{comment}{HTML}{616161} % Gray for comments
+\definecolor{number}{HTML}{B0BEC5} % Light gray for numbers
 
 \lstdefinestyle{pythonstyle}{
-    backgroundcolor=\color{backcolour},
-    commentstyle=\color{codegray},
-    keywordstyle=\color{blue},
-    numberstyle=\tiny\color{codegray},
-    stringstyle=\color{codepurple},
+    backgroundcolor=\color{background},
+    commentstyle=\color{comment}\slshape, % Italicize comments
+    keywordstyle=\color{keyword}\bfseries, % Bold keywords
+    stringstyle=\color{string},
+    numberstyle=\small\color{number},
     basicstyle=\ttfamily\footnotesize,
-    breakatwhitespace=false,
     breaklines=true,
     captionpos=b,
     keepspaces=true,
     numbers=left,
-    numbersep=5pt,
+    numbersep=8pt, % Slightly increase number separation
     showspaces=false,
     showstringspaces=false,
     showtabs=false,
@@ -121,7 +104,7 @@
     language=Python,
 }
 
-% Define a custom command to include code from a file with a specified style
+% A custom command to include code from a file with a specified style
 \newcommand{\code}[2]{
     \lstinputlisting[style=#2]{#1}
 }
