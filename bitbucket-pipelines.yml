@@ -1,0 +1,29 @@
+ options:
+   docker: true
+
+ image: kaspersoerensen/latex-docker
+
+ pipelines:
+   default:
+     - step:
+         name: Build the pdf
+         script:
+           - apt update
+           - apt install -y --no-install-recommends software-properties-common curl
+           - apt-add-repository multiverse
+           - apt update
+           - apt install -y apt-transport-https ca-certificates
+           - echo "ttf-mscorefonts-installer msttcorefonts/accepted-mscorefonts-eula select true" | debconf-set-selections
+           - apt install -y --no-install-recommends fontconfig ttf-mscorefonts-installer
+           - fc-cache -f -v
+           - latexmk -cd -e -f -xelatex -interaction=nonstopmode -synctex=1 "instructions.tex"
+         artifacts:
+           - instructions.pdf
+     - step:
+         name: Upload
+         script:
+           - pipe: atlassian/bitbucket-upload-file:0.1.2
+             variables:
+               BITBUCKET_USERNAME: 'ryselis'
+               BITBUCKET_APP_PASSWORD: 'WdVZPqRJ6sy5EzPzmYCe '
+               FILENAME: 'instructions.pdf'
