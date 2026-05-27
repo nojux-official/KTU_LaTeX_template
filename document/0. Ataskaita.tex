@@ -1,0 +1,368 @@
+%%%%%%%%%%%%%%
+%            %
+%   LAYOUT   %
+%            %
+%%%%%%%%%%%%%%
+
+\documentclass[a4paper,12pt,fleqn]{article}
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
+
+\raggedright
+
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%   ENCODING   %
+%              %
+%%%%%%%%%%%%%%%%
+
+% \usepackage[T1]{fontenc}    % Use T1 encoding
+% \usepackage[utf8]{inputenc} % Use UTF-8 encoding for input
+
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+
+\usepackage{pifont} % For checkmark symbols
+\usepackage{newunicodechar}
+\newunicodechar{✓}{\ding{51}}
+\newunicodechar{✗}{\ding{55}}
+
+\usepackage{csquotes}
+
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%   CHAPTER    %
+%              %
+%%%%%%%%%%%%%%%%
+
+\usepackage{tocloft}
+
+\renewcommand{\cftsecaftersnum}{.~}
+\renewcommand{\cftsubsecaftersnum}{.~}
+\renewcommand{\cftsubsubsecaftersnum}{.~}
+
+
+\makeatletter
+\renewcommand{\@seccntformat}[1]{\csname the#1\endcsname.\quad}
+\makeatother
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%     TOC      %
+%              %
+%%%%%%%%%%%%%%%%
+
+
+
+\renewcommand{\cftsecdotsep}{0.2}
+\renewcommand{\cftsubsecdotsep}{0.2}
+\renewcommand{\cftsubsubsecdotsep}{0.2}
+
+
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%    TABLE     %
+%              %
+%%%%%%%%%%%%%%%%
+
+% \usepackage{chngcntr}
+% \counterwithin{table}{section}
+% \renewcommand{\thetable}{\thesection.\arabic{table}}
+
+
+
+% \renewcommand{\cftlottitlefont}{\Large\bfseries}  % Title in bold
+% \renewcommand{\cfttabfont}{\bfseries}              % Table numbers bold
+% \renewcommand{cfttabfont}{\bfseries}
+
+\renewcommand{\cfttabpresnum}{\bfseries}
+\renewcommand{\cfttabaftersnum}{\textbf{ lentelė}\normalfont}
+% \renewcommand{\cfttabaftersnum}{}
+\renewcommand{\cfttabnumwidth}{4em}
+\renewcommand{\cftfigdotsep}{0.2}
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%    IMAGE     %
+%              %
+%%%%%%%%%%%%%%%%
+
+
+\renewcommand{\cftfigfont}{\normalfont}
+\renewcommand{\cftfigpresnum}{\bfseries}
+\renewcommand{\cftfigaftersnum}{\textbf{ pav.}\normalfont}
+\renewcommand{\cftfignumwidth}{3.5em}
+\renewcommand{\cfttabdotsep}{0.2}
+
+%%%%%%%%%%%%%%%%
+%              %
+%   CAPTIONS   %
+%              %
+%%%%%%%%%%%%%%%%
+
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}  % Make the figure number bold
+\captionsetup[table]{labelfont=bf}
+
+\usepackage{subcaption}
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         %
+%   SYNTAX HIGHLIGHTING   %
+%                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\definecolor{goldrule}{RGB}{212,175,55}
+
+
+\definecolor{background}{HTML}{F7F9FB} % Light background
+\definecolor{keyword}{HTML}{0D47A1} % Deep blue for keywords
+\definecolor{string}{HTML}{388E3C} % Green for strings
+\definecolor{comment}{HTML}{616161} % Gray for comments
+\definecolor{number}{HTML}{B0BEC5} % Light gray for numbers
+
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{background},
+    commentstyle=\color{comment}\slshape, % Italicize comments
+    keywordstyle=\color{keyword}\bfseries, % Bold keywords
+    stringstyle=\color{string},
+    numberstyle=\small\color{number},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=8pt, % Slightly increase number separation
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=Python,
+}
+
+\lstdefinestyle{luastyle}{
+    backgroundcolor=\color{background},
+    commentstyle=\color{comment}\slshape, % Italicize comments
+    keywordstyle=\color{keyword}\bfseries, % Bold keywords
+    stringstyle=\color{string},
+    numberstyle=\small\color{number},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=8pt, % Slightly increase number separation
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=Lua,
+    morekeywords={self,nil,true,false,local,function,end,if,then,else,elseif,for,do,while,repeat,until,return,break,and,or,not,in},
+    morecomment=[l]{--},
+    morecomment=[s]{--[[}{]]},
+}
+
+\lstdefinestyle{csharpstyle}{
+    backgroundcolor=\color{background},
+    commentstyle=\color{comment}\slshape, % Italicize comments
+    keywordstyle=\color{keyword}\bfseries, % Bold keywords
+    stringstyle=\color{string},
+    numberstyle=\small\color{number},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=8pt, % Slightly increase number separation
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=[Sharp]C,
+    morekeywords={async,await,var,yield,using,namespace,class,interface,struct,enum,delegate,event,property,public,private,protected,internal,static,virtual,override,abstract,sealed,new,null,true,false,this,base,foreach,in},
+    morecomment=[l]{//},
+    morecomment=[s]{/*}{*/},
+}
+
+\lstdefinestyle{bashstyle}{
+    backgroundcolor=\color{background},
+    commentstyle=\color{comment}\slshape, % Italicize comments
+    keywordstyle=\color{keyword}\bfseries, % Bold keywords
+    stringstyle=\color{string},
+    numberstyle=\small\color{number},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=8pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=bash
+}
+
+\newcommand{\code}[2]{
+    \lstinputlisting[style=#2]{#1}
+}
+
+\lstnewenvironment{inline_code}[1][bashstyle]
+{
+    \lstset{style=#1}
+}
+{}
+
+%%%%%%%%%%%%%%%%%%%
+%                 %
+%   EVERYTHING    %
+%     ELSE        %
+%                 %
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage[lithuanian]{babel} % Vertimas tituliniui ir antraštėms
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={black!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+
+% \setcounter{secnumdepth}{0}
+% \renewcommand{\thesection}{\hspace*{-1.0em}}
+% \renewcommand{\thesubsection}{\arabic{subsection}}
+
+% Redefine section, subsection, and subsubsection to use 12pt font size
+\makeatletter
+\renewcommand{\section}{\@startsection{section}{1}{\z@}%
+  {-3.5ex \@plus -1ex \@minus -.2ex}%
+  {2.3ex \@plus .2ex}%
+  {\normalfont\fontsize{12}{14}\selectfont\bfseries}}
+\renewcommand{\subsection}{\@startsection{subsection}{2}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\fontsize{12}{14}\selectfont\bfseries}}
+\renewcommand{\subsubsection}{\@startsection{subsubsection}{3}{\z@}%
+  {-3.25ex\@plus -1ex \@minus -.2ex}%
+  {1.5ex \@plus .2ex}%
+  {\normalfont\fontsize{12}{14}\selectfont\bfseries}}
+
+% Make List of Tables and List of Figures appear as section* (12pt, unnumbered)
+% \renewcommand{\listoftables}{\section*{\listtablename}}
+% \renewcommand{\listoffigures}{\section*{\listfigurename}}
+\makeatother
+
+\usepackage{lastpage}
+
+
+%%%%%%%%%%%%%%%%
+%              %
+% BIBLIOGRAPHY %
+%              %
+%%%%%%%%%%%%%%%%
+
+\usepackage[style=iso-numeric]{biblatex}
+\addbibresource{bakis.bib}
+
+
+%%%%%%%%%%%%%%%
+%             %
+%   CONTENT   %
+%             %
+%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+\include{1. Titulinis}
+
+\include{2. Saziningumas}
+
+\include{3. Santraukos}
+
+
+\include{3.5. Terminai}
+
+
+%%%%%%%%%%%%%%%
+%             %
+%   TURINYS   %
+%             %
+%%%%%%%%%%%%%%%
+\tableofcontents \newpage
+
+%%%%%%%%%%%%%%%
+%             %
+%   LENTELĖS  %
+%             %
+%%%%%%%%%%%%%%%
+\renewcommand{\listtablename}{}
+\begin{center}
+    \section*{Lentelių sąrašas}
+
+\end{center}
+\listoftables
+\addcontentsline{toc}{section}
+{Lentelių sąrašas}
+\newpage
+
+%%%%%%%%%%%%%%%
+%             %
+% PAVEIKSLAI  %
+%             %
+%%%%%%%%%%%%%%%
+\renewcommand{\listfigurename}{}
+\begin{center}
+    \section*{Paveikslų sąrašas}
+
+\end{center}
+
+\addcontentsline{toc}{section}
+{Paveikslų sąrašas}
+\listoffigures
+\newpage
+
+\include{4. Ivadas}
+
+\include{5. Analize}
+
+\include{6. Projektas}
+
+\include{7. Testavimas}
+
+\include{8. Dokumentacija}
+
+\include{8.5. DI}
+
+\include{9. Rezultatai}
+
+\include{10.Literatura}
+
+\include{11. Priedai}
+
+\end{document}
+

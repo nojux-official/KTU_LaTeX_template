@@ -1,0 +1,201 @@
+%%%%%%%%%%%%%%
+%            %
+%   LAYOUT   %
+%            %
+%%%%%%%%%%%%%%
+
+\documentclass[a4paper,12pt]{article}
+\usepackage{geometry}
+\geometry{top=2cm, bottom=2cm, left=2.5cm, right=2.5cm}
+
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%   ENCODING   %
+%              %
+%%%%%%%%%%%%%%%%
+
+% \usepackage[T1]{fontenc}    % Use T1 encoding
+% \usepackage[utf8]{inputenc} % Use UTF-8 encoding for input
+
+
+\usepackage{fontspec}
+\setmainfont{Times New Roman}
+
+
+\usepackage{pifont} % For checkmark symbols
+\usepackage{newunicodechar}
+\newunicodechar{✓}{\ding{51}}
+\newunicodechar{✗}{\ding{55}}
+
+\usepackage{csquotes}
+
+
+%%%%%%%%%%%%%%%%
+%              %
+%   CAPTIONS   %
+%              %
+%%%%%%%%%%%%%%%%
+
+\usepackage{caption}
+\captionsetup[figure]{labelfont=bf}
+\captionsetup[table]{labelfont=bf}
+
+\usepackage{subcaption}
+
+
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%                         %
+%   SYNTAX HIGHLIGHTING   %
+%                         %
+%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+\usepackage{listings}
+\usepackage{xcolor}
+
+\pagecolor[rgb]{0,0,0}
+\color[rgb]{1,1,1}
+
+
+
+\definecolor{background}{HTML}{F7F9FB} % Light background
+\definecolor{keyword}{HTML}{0D47A1} % Deep blue for keywords
+\definecolor{string}{HTML}{388E3C} % Green for strings
+\definecolor{comment}{HTML}{616161} % Gray for comments
+\definecolor{number}{HTML}{B0BEC5} % Light gray for numbers
+
+\lstdefinestyle{pythonstyle}{
+    backgroundcolor=\color{background},
+    commentstyle=\color{comment}\slshape, % Italicize comments
+    keywordstyle=\color{keyword}\bfseries, % Bold keywords
+    stringstyle=\color{string},
+    numberstyle=\small\color{number},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=8pt, % Slightly increase number separation
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=Python,
+}
+
+\lstdefinestyle{bashstyle}{
+    backgroundcolor=\color{background},
+    commentstyle=\color{comment}\slshape, % Italicize comments
+    keywordstyle=\color{keyword}\bfseries, % Bold keywords
+    stringstyle=\color{string},
+    numberstyle=\small\color{number},
+    basicstyle=\ttfamily\footnotesize,
+    breaklines=true,
+    captionpos=b,
+    keepspaces=true,
+    numbers=left,
+    numbersep=8pt,
+    showspaces=false,
+    showstringspaces=false,
+    showtabs=false,
+    tabsize=2,
+    language=bash
+}
+
+\newcommand{\code}[2]{
+    \lstinputlisting[style=#2]{#1}
+}
+
+\lstnewenvironment{inline_code}[1][bashstyle]
+{
+    \lstset{style=#1}
+}
+{}
+
+%%%%%%%%%%%%%%%%%%%
+%                 %
+%   EVERYTHING    %
+%     ELSE        %
+%                 %
+%%%%%%%%%%%%%%%%%%%
+
+\usepackage[lithuanian]{babel} % Vertimas tituliniui ir antraštėms
+\usepackage{amsmath}
+\usepackage{booktabs}
+
+\usepackage{graphicx}
+
+\usepackage{xcolor}
+\usepackage{hyperref}
+\hypersetup{
+    colorlinks,
+    linkcolor={black!50!black},
+    citecolor={blue!50!black},
+    urlcolor={blue!80!black}
+}
+
+
+% \setcounter{secnumdepth}{0}
+% \renewcommand{\thesection}{\hspace*{-1.0em}}
+% \renewcommand{\thesubsection}{\arabic{subsection}}
+
+
+
+
+\usepackage{lastpage}
+
+\usepackage[style=iso-numeric]{biblatex}
+\addbibresource{bakis.bib}
+
+
+%%%%%%%%%%%%%%%
+%             %
+%   CONTENT   %
+%             %
+%%%%%%%%%%%%%%%
+
+
+
+\begin{document}
+
+% \include{1. Titulinis}
+
+% \include{2. Saziningumas}
+
+% \include{3. Santraukos}
+
+
+% \include{3.5. Terminai}
+
+\tableofcontents \newpage
+
+\listoftables
+\addcontentsline{toc}{section}{{section}Lentelių sąrašas}
+\newpage
+
+\listoffigures
+\addcontentsline{toc}{section}
+{{section}Iliustracijų sąrašas}
+\newpage
+
+% \include{4. Ivadas}
+
+% \include{5. Analize}
+
+% \include{6. Projektas}
+
+% \include{7. Testavimas}
+
+\include{8. Dokumentacija}
+
+% \include{9. Rezultatai}
+
+% \include{10.Literatura}
+
+% \include{11. Priedai}
+
+\end{document}
+

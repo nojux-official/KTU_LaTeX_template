@@ -1,0 +1,67 @@
+\begin{center}
+    \section*{Priedai}
+
+\end{center}
+\addcontentsline{toc}{section}{Priedai}
+
+\newcounter{priedas}
+\renewcommand{\thepriedas}{\arabic{priedas}}
+
+\newcommand{\priedas}[2]{%
+    \refstepcounter{priedas}%
+    \par\noindent\subsection*{\thepriedas\ priedas. #1}%
+    \label{#2}%
+    \addcontentsline{toc}{subsection}{\thepriedas\ priedas. #1}%
+}
+
+\priedas{Kodo pavyzdys}{priedas:veiklos}
+
+\begin{inline_code}
+    for i in range(10):
+    print(i)
+\end{inline_code}
+
+
+% \code{kodas/adaptive.lua}{luastyle}
+% \code{kodas/example.py}{pythonstyle}
+\code{kodas/example.cs}{csharpstyle}
+
+
+\newpage
+
+
+\priedas{Citavimas}{priedas:citavimas}
+
+Bibliografijos įrašai saugomi \textit{bakis.bib} faile.
+
+Apibrėžtus įrašus galima cituoti tekste naudojant \textit{cite} komandą, pavyzdžiui: \textit{\cite{lituanistika_gudinavicius_2021}} arba \cite{capitaineplanete_pr,all_matches_function}.
+
+\priedas{Paveiklai}{priedas:uzduotis}
+
+\ref{fig:uzduotis} paveiksle pateikiamas siekiamas programos išvesties rezultatas.
+
+\begin{figure}[h]
+    \centering
+    \includegraphics[width=0.5\textwidth]{img/uzduotis.png}
+    \caption{Užduotis}
+    \label{fig:uzduotis}
+\end{figure}
+
+\priedas{Lentelės}{priedas:lentele}
+
+
+\begin{table}[h]
+    \centering
+    \begin{tabular}{|c|c|}
+        \hline
+        Stulpelis 1 & Stulpelis 2 \\
+        \hline
+        Reikšmė 1   & Reikšmė 2   \\
+        \hline
+    \end{tabular}
+    \caption{Lentelės pavyzdys}
+    \label{tab:lentele}
+\end{table}
+
+
+\newpage
