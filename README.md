@@ -1,4 +1,30 @@
-## LaTEX preparation
+# KTU Latex šablonas
+
+## Naudojimas
+
+1. Atsidaryti šią repozitoriją per VSCode.
+2. Susinstalliuoti Devcontainer įskiepį ir Docker variklį.
+3. Ctrl+Shift+P -> Remote-Containers: Reopen in Container.
+4. Atidaryti terminalą ir suinstaliuoti LaTeX paketus (žr. žemiau)
+5. Suinstaliuoti šriftus, jei reikia (žr. žemiau).
+6. Redaguoti tex failus pagal poreikį.
+7. Sukompiliuoti dokumentą `latexmk -lualatex -interaction=nonstopmode -f 0.\ Ataskaita.tex` komanda iš dokumento katalogo.
+
+Demo: [PDF dokumento pavyzdys](https://github.com/nojux-official/KTU_LaTeX_template/blob/main/document/0.%20Ataskaita.pdf)
+
+## Privalumai
+
+
+ * Sugeneruotas dokumentas atitinka KTU reikalavimus keliamus bakalauro baigiamajam darbui.
+ * Automatiškai numeruojamos lentelės, paveikslai ir priedai.
+ * Automatiškai pritaikomi šriftų dydžiai ir kiti formatavimo reikalavimai.
+ * Dokumento turinys gali būti keičiamas naudojant programavimo aplinkos įrankius.
+ * Galimybė lengvai integruoti kitus LaTeX paketus.
+ * Bibliografijos tvarkymas su biblatex (galima eksportuoti iš Zotero, Refworks, Mendeley ir kitų bibliografijos tvarkymo programų).
+ * Galimybė eksportuoti dokumentą į kitus formatus, tokius kaip EPUB, naudojant tex4ebook įrankį.
+\end{itemize}
+
+## LaTEX paruošimas
 
 <code>
 
@@ -26,7 +52,7 @@
     tlmgr install tocloft
 </code>
 
-## fonts installation
+## Šriftų įdiegimas
 
 Export from other machine:
 <code>
@@ -45,25 +71,29 @@ Install fonts:
 </code>
 
 
-## clean build
+## Laikinųjų failų ištrynimas
 <code>
 
     latexmk -c "0. Ataskaita.tex"
     latexmk -c focus.tex
 </code>
 
-## BUILD
+## Dokumento kompiliavimas
 
 <code>
+
     cd document
     latexmk -lualatex -interaction=nonstopmode -f 0.\ Ataskaita.tex
 
 </code>
 
-## for EPUB export
+## EPUB eksportas
 
+Latex leidžia eksportuoti dokumentą į EPUB ir kitus formatą naudojant tex4ebook įrankį. Tačiau negalima naudoti tokių komandų kaip `\code` ir `\begin{inline_code}` nes jos nėra palaikomos. 
+Reikalingos tokios bibliotekos:
 <code>
 
+    cd document
     tlmgr install tex4ebook
     tlmgr install luaxml
     tlmgr install luatexbase
@@ -76,12 +106,3 @@ Install fonts:
 </code>
 
 
-
-## Miscellaneous
-
-<code>
-
-    eval $(ssh-agent)
-    ssh-add ~/.ssh/id_rsa
-    git push
-</code>
